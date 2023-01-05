@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Library</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <span>Library</span>
+      </div>
+
+      <div id="add">Add Book</div>
+    </header>
+
+    <span id="empty-message">There is no books yet</span>
+
+    <section></section>
+
+    <div id="new-book">
+      <form id="frm-book">
+        <h2>New Book</h2>
+        <fieldset id="fs-title">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" />
+        </fieldset>
+        <fieldset id="fs-author">
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author" />
+        </fieldset>
+        <fieldset id="fs-pages">
+          <label for="pages">Pages</label>
+          <input type="number" name="pages" id="pages" />
+        </fieldset>
+        <fieldset id="fs-status">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="read">Read</option>
+            <option value="not-read">Not read</option>
+          </select>
+        </fieldset>
+        <input type="submit" value="Save" id="nb-save" />
+        <input type="button" value="Cancel" id="nb-cancel" />
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

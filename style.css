@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Open+Sans&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  width: 100vw;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  grid-column: 1/2;
+  display: flex;
+  align-items: center;
+}
+
+.logo > span {
+  margin-left: 30px;
+  font-size: 40px;
+  font-family: "Courgette", cursive;
+  color: #009bff;
+}
+
+#add {
+  padding: 8px;
+  border-radius: 3px;
+  background-color: #009bff;
+  color: white;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+#add:hover {
+  background-color: #39adfa;
+  transition: all 0.1s;
+}
+
+#add:active {
+  transform: translateY(1px);
+}
+
+/* SECTION */
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  width: 97vw;
+  margin-top: 30px;
+  gap: 50px;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 350px;
+  border-radius: 3px;
+  align-items: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  transition: all 0.3s;
+}
+
+.card:hover .title-container{
+  opacity: 0.9;
+}
+
+.title-container {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(18, 83, 250, 1) 0%,
+    rgba(0, 155, 255, 1) 100%
+  );
+  color: white;
+}
+
+.status {
+  padding: 2px 5px;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.read {
+  background-color:#0eff00;
+}
+
+.not-read {
+  background-color:#ff9248;
+}
+
+.h4-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 90%;
+  word-wrap: break-word;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 100;
+  grid-row: 2/3;
+  min-width: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100px;
+  width: 95%;
+  gap: 5px;
+  font-size: 14px;
+}
+
+h3 {
+  font-weight: 100;
+}
+
+.h3-info {
+  color: rgb(97, 96, 96);
+}
+
+/* NEW BOOK */
+
+#new-book {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+#frm-book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  background-color: white;
+  border-radius: 3px;
+  padding: 16px;
+}
+
+#frm-book > h2 {
+  grid-column: span 2;
+  justify-self: center;
+  align-self: center;
+  font-weight: 100;
+}
+
+fieldset {
+  border: 0;
+}
+
+input,
+select {
+  background: none;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  outline: none;
+  padding-left: 10px;
+  border: 1px solid #009bff;
+  font-size: 16px;
+}
+
+#fs-title,
+#fs-author {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+#fs-pages,
+#fs-status {
+  display: flex;
+  flex-direction: column;
+}
+
+#nb-save,
+#nb-cancel {
+  margin-top: 16px;
+  border: 0;
+  background-color: #009bff;
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#nb-save:hover,
+#nb-cancel:hover {
+  background-color: #39adfa;
+}
+
+#nb-save:active,
+#nb-cancel:active {
+  transform: translateY(1px);
+}
+
+select {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.remove {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  position: absolute;
+  align-self: flex-end;
+  cursor: pointer;
+  background-image: url("./close.svg");
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.card:hover .remove {
+  display: block;
+}
+
+
+#empty-message{
+  color: #009bff;
+  font-size: 20px;
+  position: absolute;
+  margin-top: 50vh;
+}
