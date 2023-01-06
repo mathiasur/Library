@@ -109,7 +109,7 @@ $btnSave.addEventListener("click", (event) => {
 });
 
 const removeBook = (index) => {
-  myLibrary.splice(parseInt(index, 10), 1);
+  myLibrary.splice(index, 1);
 };
 
 const removeCard = (index) => {
@@ -117,13 +117,38 @@ const removeCard = (index) => {
   $card.remove();
 };
 
+const getCardIndex = (element) => {
+  const card = element.parentNode.parentNode;
+  const { index } = card.dataset;
+  return parseInt(index, 10);
+};
+
+const changeBookStatus = (index) => {
+  myLibrary[index].toggle();
+};
+
+const changeCardStatus = (element) => {
+  if (element.classList.contains("read")) {
+    element.classList.replace("read", "not-read");
+    element.textContent = "Not read";
+  } else {
+    element.classList.replace("not-read", "read");
+    element.textContent = "Read";
+  }
+};
+
 document.addEventListener("click", (e) => {
   const element = e.target;
   if (element.className === "remove") {
-    const card = element.parentNode.parentNode;
-    const { index } = card.dataset;
+    const index = getCardIndex(element);
     removeBook(index);
     removeCard(index);
     showBooks();
+    noBookMessage();
+  }
+  if (element.className.includes("status")) {
+    const index = getCardIndex(element);
+    changeBookStatus(index);
+    changeCardStatus(element);
   }
 });
