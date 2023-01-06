@@ -4,6 +4,7 @@ const $frmNewBook = document.querySelector("#frm-book");
 const $btnCancel = document.querySelector("#nb-cancel");
 const $btnSave = document.querySelector("#nb-save");
 const $section = document.querySelector("section");
+const $emptyMessage = document.querySelector("#empty-message");
 
 const openForm = () => {
   $newBook.style = "display: flex";
@@ -17,6 +18,16 @@ const closeForm = () => {
 $btnCancel.addEventListener("click", closeForm);
 
 const myLibrary = [];
+
+const noBookMessage = () => {
+  if (myLibrary.length === 0) {
+    $emptyMessage.style = "display:block";
+  } else {
+    $emptyMessage.style = "display:none";
+  }
+};
+
+noBookMessage();
 
 const createBookCard = (book) => {
   let status;
@@ -88,6 +99,7 @@ $btnSave.addEventListener("click", (event) => {
   saveBook();
   const lastBook = myLibrary[myLibrary.length - 1];
   createBookCard(lastBook);
+  noBookMessage();
   closeForm();
   event.preventDefault();
 });
