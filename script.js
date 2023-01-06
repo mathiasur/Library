@@ -29,7 +29,7 @@ const noBookMessage = () => {
 
 noBookMessage();
 
-const createBookCard = (book) => {
+const createBookCard = (book, index) => {
   let status;
   if (book.status === "read") {
     status = "Read";
@@ -50,6 +50,7 @@ const createBookCard = (book) => {
     </div>`;
   const card = document.createElement("div");
   card.classList.add("card");
+  card.dataset.index = index;
   card.innerHTML = cardContent;
   $section.appendChild(card);
 };
@@ -60,7 +61,11 @@ const clear = () => {
 
 const showBooks = () => {
   clear();
-  myLibrary.map((book) => createBookCard(book));
+  let index = 0;
+  myLibrary.forEach((book) => {
+    createBookCard(book, index);
+    index += 1;
+  });
 };
 
 showBooks();
@@ -97,9 +102,28 @@ const saveBook = () => myLibrary.push(newBook());
 
 $btnSave.addEventListener("click", (event) => {
   saveBook();
-  const lastBook = myLibrary[myLibrary.length - 1];
-  createBookCard(lastBook);
+  showBooks();
   noBookMessage();
   closeForm();
   event.preventDefault();
+});
+
+const removeBook = (index) => {
+  myLibrary.splice(parseInt(index, 10), 1);
+};
+
+const removeCard = (index) => {
+  const $card = document.querySelector(`[data-index="${index}"]`);
+  $card.remove();
+};
+
+document.addEventListener("click", (e) => {
+  const element = e.target;
+  if (element.className === "remove") {
+    const card = element.parentNode.parentNode;
+    const { index } = card.dataset;
+    removeBook(index);
+    removeCard(index);
+    showBooks();
+  }
 });
