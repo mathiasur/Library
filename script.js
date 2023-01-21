@@ -70,23 +70,22 @@ const showBooks = () => {
 
 showBooks();
 
-const Book = (title, author, pages, status) => {
-  const toggle = function changeStatusValue() {
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
+
+  toggle() {
     if (this.status === "read") {
       this.status = "not-read";
     } else {
       this.status = "read";
     }
-  };
-
-  return {
-    title,
-    author,
-    pages,
-    status,
-    toggle,
-  };
-};
+  }
+}
 
 const newBook = () => {
   const $txtTitle = document.querySelector("#title").value;
@@ -94,8 +93,7 @@ const newBook = () => {
   const $txtPages = document.querySelector("#pages").value;
   const $slctStatus = document.querySelector("#status").value;
 
-  const book = Book($txtTitle, $txtAuthor, $txtPages, $slctStatus);
-  return book;
+  return new Book($txtTitle, $txtAuthor, $txtPages, $slctStatus);
 };
 
 const saveBook = () => myLibrary.push(newBook());
